@@ -1,5 +1,7 @@
 FROM openjdk:8-jdk-alpine
 
+LABEL author="Alejandro Such <alejandro.such@gmail.com>"
+
 RUN apk update && \
     apk add curl bash && \
     curl -O http://apache.mediamirrors.org/kafka/0.11.0.0/kafka_2.11-0.11.0.0.tgz && \
