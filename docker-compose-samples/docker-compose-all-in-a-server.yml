@@ -1,0 +1,11 @@
+version: '3'
+services:
+  zookeeper_and_kafka:
+    image: alexsuch/kafka:0.11.0.0
+    container_name: zookeeper_and_kafka
+    hostname: localhost
+    environment:
+      - MODE=ZOOKEEPER_AND_KAFKA
+    ports:
+      - "9092:9092"
+      - "2181:2181"
