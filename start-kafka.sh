@@ -13,4 +13,4 @@ echo "listeners=PLAINTEXT://$HOSTNAME:$KAFKA_PORT" >> config/server.properties
 echo "auto.create.topics.enable=$KAFKA_AUTO_CREATE_TOPICS_ENABLE" >> config/server.properties
 echo "default.replication.factor=$KAFKA_DEFAULT_REPLICATION_FACTOR" >> config/server.properties
 
-bin/kafka-server-start.sh config/server.properties
+bin/kafka-server-start.sh -daemon config/server.properties

@@ -1,16 +1,8 @@
 #!/bin/bash
 
-EXTRA_ARGS=""
-COMMAND=$1
-case $COMMAND in
-  -daemon)
-     EXTRA_ARGS="-daemon"
-     ;;
-esac
-
 cp config/zookeeper.properties.bak config/zookeeper.properties
 
-sed -i -E "s/(clientPort=)\d+/\1$ZOOKEPER_PORT/" config/zookeeper.properties
+sed -i -E "s/(clientPort=)\d+/\1$ZOOKEEPER_PORT/" config/zookeeper.properties
 sed -i -E "s/(dataDir=).*/\1$(echo $ZOOKEEPER_DATA_DIR | sed -e 's/\\/\\\\/g; s/\//\\\//g; s/&/\\\&/g')/" config/zookeeper.properties
 
 echo "" >> config/zookeeper.properties
@@ -31,4 +23,4 @@ if [ -n "${ZOOKEPER_INSTANCES}" ]; then
     done
 fi
 
-exec bin/zookeeper-server-start.sh $EXTRA_ARGS config/zookeeper.properties
+exec bin/zookeeper-server-start.sh -daemon config/zookeeper.properties

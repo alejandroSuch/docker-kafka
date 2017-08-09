@@ -13,16 +13,15 @@ RUN apk update && \
 
 COPY start*.sh /kafka_2.11-0.11.0.0/
 
-# Available modes: ZOOKEEPER_AND_KAFKA, ZOOKEEPER, KAFKA
-ENV MODE=ZOOKEEPER \ 
-# Zookeeper env variables
-    ZOOKEPER_PORT=2181 \
+
+ENV MODE=ZOOKEEPER_AND_KAFKA \ 
+
+    ZOOKEEPER_PORT=2181 \
     ZOOKEEPER_DATA_DIR=/tmp/zookeeper \
     ZOOKEEPER_INIT_LIMIT=5 \
     ZOOKEEPER_SYNC_LIMIT=2 \
     ZOOKEEPER_TICK_TIME=2000 \
-    RUN_ONLY_ZOOKEEPER=false \
-# Kafka env variables
+
     KAFKA_BROKER_ID=0 \
     KAFKA_PORT=9092 \
     KAFKA_LOG_DIRS=/tmp/kafka-logs \
@@ -33,7 +32,7 @@ ENV MODE=ZOOKEEPER \
     KAFKA_ZOOKEEPER_CONNECT=localhost:2181
 
 EXPOSE $KAFKA_PORT
-EXPOSE $ZOOKEPER_PORT
+EXPOSE $ZOOKEEPER_PORT
 
 WORKDIR /kafka_2.11-0.11.0.0/
 CMD ["/bin/bash", "start.sh"]
