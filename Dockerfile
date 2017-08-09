@@ -13,7 +13,6 @@ RUN apk update && \
 
 COPY start*.sh /kafka_2.11-0.11.0.0/
 
-
 ENV MODE=ZOOKEEPER_AND_KAFKA \ 
 
     ZOOKEEPER_PORT=2181 \
