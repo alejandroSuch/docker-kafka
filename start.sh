@@ -16,7 +16,7 @@ term_handler(){
     exit 0
 }
 
-trap 'term_handler' SIGTERM SIGINT SIGHUP SIGKILL SIGSTOP EXIT
+trap 'term_handler' SIGTERM SIGINT
 
 case $MODE in 
     "ZOOKEEPER_AND_KAFKA")

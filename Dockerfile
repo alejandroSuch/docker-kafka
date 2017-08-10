@@ -2,6 +2,8 @@ FROM openjdk:8-jdk-alpine
 
 LABEL author="Alejandro Such <alejandro.such@gmail.com>"
 
+ADD start*.sh /kafka_2.11-0.11.0.0/
+
 RUN apk update && \
     apk add curl bash && \
     curl -O http://apache.mediamirrors.org/kafka/0.11.0.0/kafka_2.11-0.11.0.0.tgz && \
@@ -9,9 +11,8 @@ RUN apk update && \
     apk del curl && \
     rm -rf /tmp/* /var/cache/apk/* *.tgz && \
     cp /kafka_2.11-0.11.0.0/config/zookeeper.properties /kafka_2.11-0.11.0.0/config/zookeeper.properties.bak && \
-    cp /kafka_2.11-0.11.0.0/config/server.properties /kafka_2.11-0.11.0.0/config/server.properties.bak
-
-COPY start*.sh /kafka_2.11-0.11.0.0/
+    cp /kafka_2.11-0.11.0.0/config/server.properties /kafka_2.11-0.11.0.0/config/server.properties.bak && \
+    chmod +x /kafka_2.11-0.11.0.0/start*.sh 
 
 ENV MODE=ZOOKEEPER_AND_KAFKA \ 
 
@@ -34,4 +35,4 @@ EXPOSE $KAFKA_PORT
 EXPOSE $ZOOKEEPER_PORT
 
 WORKDIR /kafka_2.11-0.11.0.0/
-CMD ["/bin/bash", "start.sh"]
+CMD ["/kafka_2.11-0.11.0.0/start.sh"]
