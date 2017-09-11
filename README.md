@@ -1,4 +1,4 @@
-# Apache Kafka and Zookeeper
+# Apache Kafka and Zookeeper [![Docker Pulls](https://img.shields.io/docker/pulls/alexsuch/kafka.svg)](https://hub.docker.com/r/alexsuch/angular-cli/)
 
 This Docker container allows you to launch instances of Apache Kafka and Apache Zookeeper.
 
